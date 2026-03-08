@@ -1,0 +1,94 @@
+/* Reset */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Animated Gradient Background */
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(-45deg,#667eea,#764ba2,#6a11cb,#2575fc);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+}
+
+@keyframes gradientBG{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* Login/Signup container */
+.login-box{
+    width: 400px;
+    max-width: 90%;
+    padding: 50px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    color: white;
+    margin: 80px auto;
+}
+
+.login-box h2{
+    text-align: center;
+    margin-bottom: 35px;
+    font-size: 28px;
+}
+
+.input-box input{
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-bottom: 2px solid white;
+    background: transparent;
+    outline: none;
+    color: white;
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+
+.input-box label{
+    color: white;
+}
+
+.login-btn{
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 25px;
+    background: white;
+    color: #764ba2;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-btn:hover{
+    background: #ddd;
+    transform: scale(1.05);
+}
+.error-message{
+    color: #ff4d4d;
+    margin-top: 10px;
+    font-weight: bold;
+    display: none;
+}
+
+.shake{
+    animation: shake 0.4s;
+}
+
+@keyframes shake{
+    0%{transform: translateX(0);}
+    25%{transform: translateX(-5px);}
+    50%{transform: translateX(5px);}
+    75%{transform: translateX(-5px);}
+    100%{transform: translateX(0);}
+}

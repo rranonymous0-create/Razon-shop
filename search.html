@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>search</title>
+    <link rel="stylesheet" href="style.css">
+
+<body>
+    <div class="navbar">
+
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about us.html">About Us</a></li>
+            <li class="active"><a href="search.html">Search</a></li>
+            <li><a href="contact.html">Contact</a></li>
+           <li><a href="FAQ.html">FAQ</a></li>
+           <li><a href="product.html">Products</a></li>
+        </ul>
+    
+        <div id="profileContainer">
+            <a href="login.html" id="authBtn">Login</a>
+        </div>
+    
+    </div>
+
+
+    <div class="container">
+        <form action="#" method="get" class="search-bar">
+            <input type="text" placeholder="search anything...." name="q">
+            <button type="submit"></button>
+        </form>
+    </div>
+    
+
+    <script>
+        let container = document.getElementById("profileContainer");
+
+        if (localStorage.getItem("loggedIn") === "true") {
+
+            let username = localStorage.getItem("currentUser");
+
+            container.innerHTML = `
+            <div class="profile-circle" id="avatar">
+                ${username ? username.charAt(0).toUpperCase() : "U"}
+            </div>
+    
+            <div class="profile-dropdown" id="dropdown">
+                <p><strong>Name:</strong> ${username}</p>
+                <button onclick="logout()">Logout</button>
+            </div>
+        `;
+
+            document.getElementById("avatar").addEventListener("click", function () {
+                let dropdown = document.getElementById("dropdown");
+                dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+            });
+
+        } else {
+            container.innerHTML = `<a href="login.html">Login</a>`;
+        }
+
+        function logout() {
+            localStorage.removeItem("loggedIn");
+            localStorage.removeItem("currentUser");
+            window.location.href = "login.html";
+        }
+    </script>
+
+   
+</body>
+</head>
+
+</html>
