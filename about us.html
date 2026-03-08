@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RAZONSHOP - About Us</title>
+    <link rel="stylesheet" href="styleaboutus.css"> <!-- new CSS file -->
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="nav-left">
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li class="active"><a href="about us.html">About Us</a></li>
+            <li><a href="search.html">Search</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="FAQ.html">FAQ</a></li>
+            <li><a href="product.html">Products</a></li>
+        </ul>
+    </div>
+
+    <div id="profileContainer"></div>
+</nav>
+
+<!-- Main content -->
+<section class="about-section">
+    <div class="container">
+        <h1>About RAZONSHOP</h1>
+        <p>Welcome to RAZONSHOP! By Reyansh Raj We provide high-quality products at affordable prices. Our mission is to deliver excellent customer service and a seamless shopping experience.</p>
+
+        <h2>Our Vision</h2>
+        <p>To become the most trusted online store for all your needs.</p>
+
+        <h2>Our Team</h2>
+        <p>We are a passionate team of designers, developers, and marketers working together to make your shopping experience amazing.</p>
+    </div>
+</section>
+
+<!-- Profile JS -->
+<script>
+    let container = document.getElementById("profileContainer");
+    
+    if(localStorage.getItem("loggedIn") === "true"){
+    
+        let username = localStorage.getItem("currentUser");
+    
+        container.innerHTML = `
+            <div class="profile-circle" id="avatar">
+                ${username ? username.charAt(0).toUpperCase() : "U"}
+            </div>
+    
+            <div class="profile-dropdown" id="dropdown">
+                <p><strong>Name:</strong> ${username}</p>
+                <button onclick="logout()">Logout</button>
+            </div>
+        `;
+    
+        document.getElementById("avatar").addEventListener("click", function(){
+            let dropdown = document.getElementById("dropdown");
+            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+        });
+    
+    }else{
+        container.innerHTML = `<a href="login.html">Login</a>`;
+    }
+    
+    function logout(){
+        localStorage.removeItem("loggedIn");
+        localStorage.removeItem("currentUser");
+        window.location.href = "login.html";
+    }
+    </script>
+
+</body>
+</html>
